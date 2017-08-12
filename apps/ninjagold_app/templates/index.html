@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Ninja Gold</title>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'style.css' %}" media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <img src="../static/ninjagold.png">
+    <div id="goldcount"><b>Gold:</b><br>{{ request.session.gold }}</div>
+    <div id ="places">
+      <div class="place" id="farm">
+        <h2>Farm</h2><br>
+        <form action="/process" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="farm">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+      <div class="place" id="house">
+        <h2>House</h2>
+        <form action="/process" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="house">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+      <div class="place" id="junkyard">
+        <h2>Junkyard</h2>
+        <form action="/process" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="junkyard">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+      <div class="place" id="casino">
+        <h2>Casino</h2>
+        <form action="/process" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="place" value="casino">
+          <input type="submit" value="Enter">
+        </form>
+      </div>
+    </div>
+    <div id="activitylog"> <!--THIS IS THE PART THAT DOESN'T WORK. THE VARIABLE WORKS, BUT HOW TO GET EACH ITEM IN THE LIST TO PRINT INSTEAD OF THE LIST?-->
+      
+      {{request.session.activity}}
+
+    </div>
+  </body>
+</html>
